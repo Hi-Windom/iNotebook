@@ -6,8 +6,47 @@
     xmlns:local="clr-namespace:jupyter"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="关于软件"
-    Width="800"
-    Height="450"
+    Width="888"
+    Height="580"
+    AllowsTransparency="True"
+    Background="Transparent"
+    MouseDoubleClick="Window_MouseDoubleClick"
+    Opacity=".98"
+    ResizeMode="NoResize"
+    Topmost="True"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
     mc:Ignorable="d">
-    <Grid />
+    <Border
+        Width="Auto"
+        Height="Auto"
+        Background="#242"
+        BorderBrush="#991"
+        BorderThickness="2.2"
+        CornerRadius="0,30,40,50">
+        <!--<Border.Background>
+            <ImageBrush ImageSource=".jpg"/>
+        </Border.Background>-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Margin="5"
+                Foreground="#ccc"
+                Text="694357845@qq.com" />
+            <Grid Grid.Row="1" />
+            <TextBlock
+                Grid.Row="2"
+                Margin="1,10,1,1"
+                Padding="5"
+                HorizontalAlignment="Center"
+                Foreground="#ccc"
+                Text="liaoshanyi" />
+        </Grid>
+    </Border>
+
 </Window>

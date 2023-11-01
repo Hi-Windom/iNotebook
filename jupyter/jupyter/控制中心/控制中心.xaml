@@ -8,6 +8,7 @@
     Title="控制中心"
     Width="800"
     Height="450"
+    Background="#88c"
     mc:Ignorable="d">
     <Grid />
 </Window>

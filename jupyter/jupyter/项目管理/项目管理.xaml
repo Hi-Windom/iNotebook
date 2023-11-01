@@ -8,6 +8,7 @@
     Title="项目管理"
     Width="800"
     Height="450"
+    Background="#69c"
     mc:Ignorable="d">
     <Grid />
 </Window>
