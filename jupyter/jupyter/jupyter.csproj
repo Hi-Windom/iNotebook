@@ -13,8 +13,4 @@
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2088.41" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="任务大厅\" />
-  </ItemGroup>
-
 </Project>

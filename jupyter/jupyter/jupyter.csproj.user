@@ -7,7 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="关于软件\关于软件.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="控制中心\控制中心.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="项目管理\项目管理.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="关于软件\关于软件.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="控制中心\控制中心.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="项目管理\项目管理.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

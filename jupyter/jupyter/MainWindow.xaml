@@ -7,8 +7,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="winNotebook 1.0 by Hi-Windom"
-Width="900"
-Height="650">
+Width="800"
+Height="500"
+        WindowStartupLocation="CenterScreen">
     <!--<Grid>
 
     </Grid>-->
@@ -27,12 +28,12 @@ Height="650">
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Border Background="red" />
-            <Border Grid.Row="1" Background="green" />
+            <Border Background="#861" />
+            <Border Grid.Row="1" Background="#531" />
             <Border
             Grid.Column="1"
             Grid.ColumnSpan="3"
-            Background="Yellow" />
+            Background="#123" />
             <Viewbox
             Grid.Row="1"
             Grid.Column="1"
@@ -43,41 +44,60 @@ Height="650">
                             <Button
                             x:Name="logout"
                             Width="Auto"
-                            Margin="20"
-                            Click="logout_Click"
-                            Content="注销登录"
+                            Margin="8 16"
+                            Click="Logout_Click"
+                            Content="注 销 登 录"
                             Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                             <Button
                             Width="Auto"
                             Margin="{Binding ElementName=logout, Path=Margin}"
                             Click="项目管理_Click"
-                            Content="项目管理"
+                            Content="项 目 管 理"
                             Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                             <Button
                             Width="Auto"
                             Margin="{Binding ElementName=logout, Path=Margin}"
                                 Click="智能任务_Click"
-                            Content="智能任务"
+                            Content="智 能 任 务"
                             IsEnabled="False"
                             Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
-                            <Button
-                            Width="Auto"
-                            Margin="{Binding ElementName=logout, Path=Margin}"
-                            Content="更多"
-                            IsEnabled="False"
-                            Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
+                            
                             <Button
                             Width="Auto"
                             Margin="{Binding ElementName=logout, Path=Margin}"
                             Click="控制中心_Click"
-                            Content="控制中心"
+                            Content="控 制 中 心"
                             Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                             <Button
                             Width="Auto"
                             Margin="{Binding ElementName=logout, Path=Margin}"
                             Click="关于软件_Click"
-                            Content="关于软件"
+                            Content="关 于 软 件"
                             Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
+                            <Button
+Width="Auto"
+Margin="{Binding ElementName=logout, Path=Margin}"
+Content=" "
+IsEnabled="False"
+Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
+                            <Button
+Width="Auto"
+Margin="{Binding ElementName=logout, Path=Margin}"
+Content=" "
+IsEnabled="False"
+Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
+                            <Button
+Width="Auto"
+Margin="{Binding ElementName=logout, Path=Margin}"
+Content=" "
+IsEnabled="False"
+Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
+                            <Button
+Width="Auto"
+Margin="{Binding ElementName=logout, Path=Margin}"
+Content=" "
+IsEnabled="False"
+Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                         </UniformGrid>
                     </ScrollViewer.Content>
                 </ScrollViewer>
