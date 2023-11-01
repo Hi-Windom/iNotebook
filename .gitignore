@@ -1,0 +1,6 @@
+# common
+/.history
+# for visual studio 2022
+**/.vs
+**/bin
+**/obj

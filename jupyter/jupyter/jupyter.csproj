@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="5.0.0-ci431" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2088.41" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="任务大厅\" />
+  </ItemGroup>
+
+</Project>
