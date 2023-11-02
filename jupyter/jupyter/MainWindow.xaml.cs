@@ -1,5 +1,8 @@
 ﻿using jupyter.util;
+using Masuit.Tools.Files;
+using Masuit.Tools.Logging;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,9 +24,29 @@ namespace jupyter
         bool _AllowClose = false;
         bool _ShowingDialog = false;
         bool _reLogin = false;
-        public MainWindow()
+        WindowsManager2_SingleStringArgsDC dc = new();
+        public MainWindow(bool newin = true)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            #region 登录界面加载及验证
+            //显示登陆界面，验证后返回。
+            if (newin)
+            {
+                连接的实例.Text = "";
+                登录 loginWindow = new();
+                loginWindow.ShowDialog();
+                if (loginWindow.DialogResult != Convert.ToBoolean(1))
+                {
+                    this.Hide();
+                }
+            }
+            //显示登陆界面 结束
+            #endregion
+            this.Activate();
+            App.Current.MainWindow = this;
+
         }
 
         protected override async void OnClosing(CancelEventArgs e)
@@ -87,14 +110,23 @@ namespace jupyter
             if (result is bool boolResult && boolResult)
             {
                 _AllowClose = true;
-                App.Current.Shutdown();
+                App.Taskbar.Icon = null;
+                App.Taskbar.Dispose();
+                Application.Current.Shutdown(); Process.GetCurrentProcess().Kill();
                 //Close();
             }
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-
+            _reLogin = true;
+            //foreach (Window w in Application.Current.Windows) w.Close();
+            MyWindowClass.隐藏非指定窗口(string.Empty);
+            登录 dl = new();
+            dl.ShowDialog();
+            _reLogin = false;
+            this.Activate();
+            App.Current.MainWindow = this;
         }
         private void 项目管理_Click(object sender, RoutedEventArgs e)
         {
@@ -115,6 +147,39 @@ namespace jupyter
         {
             WindowsManager<关于软件>.Show(new object()); // 单实例
             //this.Hide();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // 窗口拖动
+            try
+            {
+                DragMove();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+        }
+
+        private void dev1_Click(object sender, RoutedEventArgs e)
+        {
+            LogManager.LogDirectory = AppDomain.CurrentDomain.BaseDirectory + "/logs";
+            LogManager.Event += info =>
+            {
+                //todo:注册一些事件操作
+                App.DCbox.Name = LogManager.LogDirectory;
+                WindowsManager2<右下角累加通知>.Show(App.DCbox);
+            };
+            LogManager.Info("记录一次消息");
+            LogManager.Error(new Exception("异常消息"));
+        }
+
+        private void dev2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dev3_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

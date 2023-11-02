@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -60,5 +61,56 @@ namespace jupyter.util
             window = null;
         }
 
+    }
+
+
+    // 仅适用于使用DataContext通知累加更新的窗口
+    public class WindowsManager2<TWindow> where TWindow : Window, new()
+    {
+        static TWindow window;
+
+        public static void Show(object vm)
+        {
+            if (window == null)
+            {
+                window = new TWindow();
+                window.Closing += new CancelEventHandler(onClosing);
+            }
+            // 更新DataContext
+            window.DataContext = vm;
+            window.Show();
+            // 再次打开窗口时需要激活
+            window.Activate();
+        }
+
+        static void onClosing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = false;
+            window = null;
+        }
+
+    }
+    public class WindowsManager2_SingleStringArgsDC : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = $"\n[{DateTime.Now}]  {value}\n{name}"; Notify(); }
+        }
+        public void Clear()
+        {
+            name = string.Empty; Notify("Name");
+        }
+
+        private void Notify([CallerMemberName] string obj = "")
+        {
+            if (PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(obj));
+            }
+        }
     }
 }

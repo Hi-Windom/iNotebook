@@ -6,11 +6,39 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>images\jupyter_app.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\conda.png" />
+    <None Remove="images\image.jpg" />
+    <None Remove="images\jupyter.png" />
+    <None Remove="images\jupyter_app.ico" />
+    <None Remove="images\notifyIco.ico" />
+    <None Remove="images\python.png" />
+    <None Remove="images\qq.jpg" />
+    <None Remove="images\qq.png" />
+    <None Remove="images\vscode.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+    <PackageReference Include="Hardcodet.Wpf.TaskbarNotification" Version="1.0.5" />
+    <PackageReference Include="Masuit.Tools.Core" Version="2.6.7.4" />
     <PackageReference Include="MaterialDesignThemes" Version="5.0.0-ci431" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2088.41" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\conda.png" />
+    <Resource Include="images\image.jpg" />
+    <Resource Include="images\jupyter.png" />
+    <Resource Include="images\jupyter_app.ico" />
+    <Resource Include="images\notifyIco.ico" />
+    <Resource Include="images\python.png" />
+    <Resource Include="images\qq.jpg" />
+    <Resource Include="images\qq.png" />
+    <Resource Include="images\vscode.png" />
   </ItemGroup>
 
 </Project>

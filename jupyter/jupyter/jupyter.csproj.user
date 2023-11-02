@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
+  <PropertyGroup>
+    <_LastSelectedProfileId>D:\Gitrepo\hi-windom\winNotebook\jupyter\jupyter\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
   <ItemGroup>
     <ApplicationDefinition Update="App.xaml">
       <SubType>Designer</SubType>
@@ -11,6 +13,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="控制中心\控制中心.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="登录.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="项目管理\UserControl1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="项目管理\项目管理.xaml.cs">
@@ -24,7 +32,19 @@
     <Page Update="关于软件\关于软件.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="右下角累加通知.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="微信公众号.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="控制中心\控制中心.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="登录.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="项目管理\UserControl1.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="项目管理\项目管理.xaml">

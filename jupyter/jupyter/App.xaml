@@ -1,19 +1,93 @@
-﻿<Application x:Class="jupyter.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:jupyter"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             StartupUri="MainWindow.xaml">
+﻿<Application
+    x:Class="jupyter.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:jupyter"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:tb="http://www.hardcodet.net/taskbar"
+    ShutdownMode="OnExplicitShutdown">
+    <!--  StartupUri="MainWindow.xaml"  -->
     <Application.Resources>
         <ResourceDictionary>
-        <ResourceDictionary.MergedDictionaries>
-            <materialDesign:BundledTheme
-        BaseTheme="Light"
-        PrimaryColor="DeepPurple"
-        SecondaryColor="Lime" />
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme
+                    BaseTheme="Light"
+                    PrimaryColor="DeepPurple"
+                    SecondaryColor="Lime" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
-        </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
+            <!--  toast 默认样式  -->
+            <Style TargetType="{x:Type local:Toast}">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:Toast}">
+                            <Border
+                                MinWidth="50"
+                                MinHeight="40"
+                                MaxHeight="200"
+                                Padding="25,0"
+                                Background="#90000000"
+                                CornerRadius="2">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="1" />
+                                </Border.Effect>
+                                <ContentPresenter
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    TextBlock.FontSize="14" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--  托盘 开始  -->
+            <!--  FontFamily="{StaticResource uiSC}"  -->
+            <ContextMenu
+                x:Key="SysTrayMenu"
+                x:Shared="false"
+                Background="#eeeeeeee"
+                FontSize="14">
+                <MenuItem Command="{Binding ShowWindowCommand}" Header="显示主窗口" />
+                <MenuItem Command="{Binding HideWindowCommand}" Header="隐藏主窗口" />
+                <MenuItem Command="{Binding ShowAppboxCommand}" Header="通知中心" />
+
+                <MenuItem Command="{Binding ShowWXCommand}">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>与开发者联系</TextBlock>
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Foreground="#3252cc"
+                                Kind="Qqchat" />
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator />
+                <MenuItem
+                    HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding ExitApplicationCommand}"
+                    Header="退出" />
+            </ContextMenu>
+
+            <tb:TaskbarIcon
+                x:Key="Taskbar"
+                ContextMenu="{StaticResource SysTrayMenu}"
+                DoubleClickCommand="{Binding ShowWindowCommand}"
+                IconSource="./images/jupyter_app.ico"
+                PopupActivation="LeftOrDoubleClick"
+                ToolTipText="  QQ 694357845 ">
+                <tb:TaskbarIcon.DataContext>
+                    <local:NotifyIconViewModel />
+                </tb:TaskbarIcon.DataContext>
+            </tb:TaskbarIcon>
+            <!--  托盘 结束  -->
+        </ResourceDictionary>
+
+
     </Application.Resources>
 </Application>

@@ -4,11 +4,237 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:jupyter"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="项目管理"
-    Width="800"
-    Height="450"
-    Background="#69c"
+    Width="1100"
+    Height="700"
+    MinWidth="480"
+    MinHeight="450"
+    Background="#e8ac"
+    ResizeMode="CanResize"
+    TextBlock.TextAlignment="Center"
+    WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Grid />
+
+    <Window.Resources>
+        <WindowChrome x:Key="WindowChromeKey">
+            <!--  无窗口模式  -->
+            <WindowChrome.ResizeBorderThickness>
+                <Thickness>8</Thickness>
+            </WindowChrome.ResizeBorderThickness>
+        </WindowChrome>
+
+    </Window.Resources>
+
+    <Border Background="Transparent" CornerRadius="80">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="8" />
+            </Grid.ColumnDefinitions>
+            <ProgressBar
+                Grid.Column="1"
+                Height="10"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="#aa1"
+                IsIndeterminate="True"
+                Orientation="Vertical" />
+            <materialDesign:Card Grid.Column="0" Background="Transparent">
+                <TabControl
+                    materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+                    Background="Transparent"
+                    SnapsToDevicePixels="True"
+                    Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                    TabStripPlacement="Left">
+                    <materialDesign:NavigationRailAssist.FloatingContent>
+                        <Button
+                            Margin="8"
+                            Background="#ccc"
+                            BorderBrush="#666"
+                            Content="{materialDesign:PackIcon Kind=Plus}"
+                            Style="{StaticResource MaterialDesignFloatingActionAccentButton}" />
+                    </materialDesign:NavigationRailAssist.FloatingContent>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="Folder" />
+                                <TextBlock HorizontalAlignment="Center" Text="项目" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <materialDesign:ColorZone
+                                Grid.Row="0"
+                                Margin="16"
+                                Padding="8,4,8,4"
+                                Panel.ZIndex="1"
+                                Background="#cccc"
+                                CornerRadius="2"
+                                Mode="Standard">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Style="{StaticResource MaterialDesignToolButton}">
+                                        <materialDesign:PackIcon Kind="Search" Opacity=".56" />
+                                    </Button>
+                                    <TextBox
+                                        Grid.Column="1"
+                                        MinWidth="200"
+                                        Margin="8,0,0,0"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="Search something..."
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        BorderThickness="0"
+                                        TextAlignment="Justify" />
+                                    <Button Grid.Column="2" Style="{StaticResource MaterialDesignToolButton}">
+                                        <materialDesign:PackIcon
+                                            Margin="8,0,0,0"
+                                            Kind="Microphone"
+                                            Opacity=".56" />
+                                    </Button>
+                                </Grid>
+                            </materialDesign:ColorZone>
+                            <StackPanel
+                                x:Name="itemlist01"
+                                Grid.Row="1"
+                                Margin="16"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                                <ScrollViewer
+                                    MaxHeight="700"
+                                    Margin="16,16,-3,16"
+                                    VerticalAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch">
+                                    <ItemsControl x:Name="itemsControl" />
+
+                                </ScrollViewer>
+
+                            </StackPanel>
+                        </Grid>
+
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="ClockOutline" />
+                                <TextBlock HorizontalAlignment="Center" Text="最近" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <StackPanel Margin="16">
+                            <TextBlock
+                                Margin="0,0,0,8"
+                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                Text="Recent" />
+                            <TextBlock>
+                                <Run Text="tab 2 content. Default look and behaviors." />
+                                <LineBreak />
+                                <LineBreak />
+                                <Run FontStyle="Italic">
+                                    Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+                                </Run>
+                            </TextBlock>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="LanguagePython" />
+                                <TextBlock HorizontalAlignment="Center" Text="Python" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <StackPanel Margin="16">
+                            <TextBlock
+                                Margin="0,0,0,8"
+                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                Text="Python" />
+                            <TextBlock>
+                                <Run Text="tab 3 content. Default look and behaviors." />
+                                <LineBreak />
+                                <LineBreak />
+                                <Run FontStyle="Italic">
+                                    Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+                                </Run>
+                            </TextBlock>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="TrayArrowDown" />
+                                <TextBlock HorizontalAlignment="Center" Text="导入" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <StackPanel Margin="16">
+                            <TextBlock
+                                Margin="0,0,0,8"
+                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                Text="Import" />
+                            <TextBlock>
+                                <Run Text="tab 4 content. Default look and behaviors." />
+                                <LineBreak />
+                                <LineBreak />
+                                <Run FontStyle="Italic">
+                                    Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+                                </Run>
+                            </TextBlock>
+                            <Button Click="Button_Click">指定路径扫描</Button>
+                            <Button Click="Button_Click_1">指定盘符扫描</Button>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="TrayArrowUp" />
+                                <TextBlock HorizontalAlignment="Center" Text="导出" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <StackPanel Margin="16">
+                            <TextBlock
+                                Margin="0,0,0,8"
+                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                Text="Export" />
+                            <TextBlock>
+                                <Run Text="tab 5 content. Default look and behaviors." />
+                                <LineBreak />
+                                <LineBreak />
+                                <Run FontStyle="Italic">
+                                    Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+                                </Run>
+                            </TextBlock>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </materialDesign:Card>
+        </Grid>
+    </Border>
+
 </Window>

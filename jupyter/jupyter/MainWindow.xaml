@@ -12,11 +12,19 @@
     MinWidth="800"
     MinHeight="500"
     Background="#b89563"
+    MouseLeftButtonDown="Window_MouseLeftButtonDown"
+    WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <!--<Grid>
+    <Window.Resources>
+        <WindowChrome x:Key="WindowChromeKey">
+            <!--  无窗口模式  -->
+            <WindowChrome.ResizeBorderThickness>
+                <Thickness>8</Thickness>
+            </WindowChrome.ResizeBorderThickness>
+        </WindowChrome>
+    </Window.Resources>
 
-    </Grid>-->
     <materialDesign:DialogHost>
         <Grid>
             <Grid.Resources>
@@ -34,20 +42,19 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Border Background="#123" />
-            <materialDesign:PackIcon
+            <Image
                 Grid.Column="0"
                 Grid.ColumnSpan="1"
-                Width="60"
-                Height="60"
-                Margin="14"
+                Width="70"
+                Height="70"
+                Margin="-5,0,0,0"
                 Panel.ZIndex="99"
-                Foreground="#fda"
-                Kind="Home" />
-            <Border Grid.Row="1" Background="#c99" />
+                Source="./images/qq.png" />
+            <Border Grid.Row="1" Background="#123" />
             <Border
                 Grid.Column="1"
                 Grid.ColumnSpan="3"
-                Background="#123" />
+                Background="#b89563" />
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="0"
@@ -55,7 +62,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="50"
-                Foreground="#fda"
+                Foreground="#f6e1ee"
                 TextAlignment="Center">
                 winNotebook 1.0
             </TextBlock>
@@ -118,22 +125,25 @@
                                 IsEnabled="False"
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                             <Button
+                                Name="dev1"
                                 Width="Auto"
                                 Margin="{Binding ElementName=logout, Path=Margin}"
-                                Content=" "
-                                IsEnabled="False"
+                                Click="dev1_Click"
+                                Content="dev 1"
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                             <Button
+                                Name="dev2"
                                 Width="Auto"
                                 Margin="{Binding ElementName=logout, Path=Margin}"
-                                Content=" "
-                                IsEnabled="False"
+                                Click="dev2_Click"
+                                Content="dev 2"
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                             <Button
+                                Name="dev3"
                                 Width="Auto"
                                 Margin="{Binding ElementName=logout, Path=Margin}"
-                                Content=" "
-                                IsEnabled="False"
+                                Click="dev3_Click"
+                                Content="dev 3"
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                         </UniformGrid>
                     </ScrollViewer.Content>
