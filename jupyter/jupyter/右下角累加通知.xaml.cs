@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Masuit.Tools.Logging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -23,6 +24,8 @@ namespace jupyter
             InitializeComponent();
             note.MouseEnter += (s, e) => { note.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#cc222233")); };
             note.MouseLeave += (s, e) => { note.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#55222233")); };
+            LogManager.LogDirectory = AppDomain.CurrentDomain.BaseDirectory + "/logs";
+            LogManager.Debug(App.DCbox.Name);
             // 右下角显示
             var r = SystemParameters.WorkArea;
             this.Left = r.Right - ActualWidth;

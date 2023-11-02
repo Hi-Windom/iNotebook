@@ -181,5 +181,30 @@ namespace jupyter
         {
 
         }
+
+        private void logEntrance_Click(object sender, RoutedEventArgs e)
+        {
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "logs";
+
+            try
+            {
+                this.logEntrance.IsEnabled = false;
+                Process.Start("explorer.exe", path);
+                App.DCbox.Name = $"{path} 已就绪，首次打开可能存在延时，如已打开请检查资源管理窗口";
+                WindowsManager2<右下角累加通知>.Show(App.DCbox);
+            }
+            catch (Exception ex)
+            {
+                if (!System.IO.Directory.Exists(path))
+                {
+                    MessageBox.Show($"The directory {path} does not exist.");
+                    return;
+                }
+                App.DCbox.Name = ex.Message;
+                WindowsManager2<右下角累加通知>.Show(App.DCbox);
+            }
+            this.logEntrance.IsEnabled = true;
+        }
     }
 }

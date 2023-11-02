@@ -119,10 +119,11 @@
                                 Content="关 于 软 件"
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                             <Button
+                                Name="logEntrance"
                                 Width="Auto"
                                 Margin="{Binding ElementName=logout, Path=Margin}"
-                                Content=" "
-                                IsEnabled="False"
+                                Click="logEntrance_Click"
+                                Content="日 志 入 口"
                                 Style="{StaticResource MaterialDesignFlatDarkBgButton}" />
                             <Button
                                 Name="dev1"
