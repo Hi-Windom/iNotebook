@@ -8,6 +8,8 @@
     Title="微信公众号"
     Width="512"
     Height="900"
+    AllowsTransparency="True"
+    Background="Transparent"
     ResizeMode="NoResize"
     ShowInTaskbar="False"
     Topmost="True"
@@ -16,7 +18,7 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="./images/qq.jpg" />
+            <ImageBrush x:Name="imageQQ" ImageSource="./images/qq_qrcode.png" />
         </Grid.Background>
     </Grid>
 </Window>

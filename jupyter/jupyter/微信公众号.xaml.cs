@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace jupyter
 {
@@ -11,6 +13,7 @@ namespace jupyter
         {
             InitializeComponent();
             this.MouseLeftButtonDown += (s, e) => { this.Close(); };
+
             // 右下角显示
             var r = SystemParameters.WorkArea;
             this.Left = r.Right - ActualWidth;

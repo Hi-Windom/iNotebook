@@ -108,8 +108,32 @@ namespace jupyter
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            App.DCbox.Name = "后续支持";
+            string path = this.projectListItemFolder.Text;
+            string cmd = $"python -m jupyter notebook --port=6969 --ip=* --allow-root --notebook-dir=\"{path.Replace("\\", "\\\\")}\" \n";
+            string cmd2 = "conda activate lab\n";
+            App.DCbox.Name = cmd;
             WindowsManager2<右下角累加通知>.Show(App.DCbox);
+            try
+            {
+                // 启动命令行进程
+                Process process = new Process();
+                process.StartInfo.FileName = "powershell.exe"; // 命令行解释器
+                process.StartInfo.UseShellExecute = false; // 是否使用操作系统外壳程序
+                process.StartInfo.RedirectStandardInput = true; // 是否重定向标准输入
+                process.StartInfo.RedirectStandardOutput = true; // 是否重定向标准输出
+                process.StartInfo.CreateNoWindow = false; // 是否创建窗口
+                process.Start();
+
+                // 模拟用户输入
+                process.StandardInput.WriteLine(cmd2);
+                process.StandardInput.WriteLine(cmd);
+
+            }
+            catch (Exception ex)
+            {
+                App.DCbox.Name = ex.Message;
+                WindowsManager2<右下角累加通知>.Show(App.DCbox);
+            }
         }
     }
 }

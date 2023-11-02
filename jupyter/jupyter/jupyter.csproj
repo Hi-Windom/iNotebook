@@ -16,8 +16,12 @@
     <None Remove="images\jupyter_app.ico" />
     <None Remove="images\notifyIco.ico" />
     <None Remove="images\python.png" />
-    <None Remove="images\qq.jpg" />
     <None Remove="images\qq.png" />
+    <None Remove="images\qq_fix1.jpg" />
+    <None Remove="images\qq_fix2.jpg" />
+    <None Remove="images\qq_fix3.jpg" />
+    <None Remove="images\qq_fix4.jpg" />
+    <None Remove="images\qq_qrcode.png" />
     <None Remove="images\vscode.png" />
   </ItemGroup>
 
@@ -36,8 +40,8 @@
     <Resource Include="images\jupyter_app.ico" />
     <Resource Include="images\notifyIco.ico" />
     <Resource Include="images\python.png" />
-    <Resource Include="images\qq.jpg" />
     <Resource Include="images\qq.png" />
+    <Resource Include="images\qq_qrcode.png" />
     <Resource Include="images\vscode.png" />
   </ItemGroup>
 
