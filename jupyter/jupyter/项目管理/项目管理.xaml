@@ -163,20 +163,53 @@
                                 <TextBlock HorizontalAlignment="Center" Text="Python" />
                             </StackPanel>
                         </TabItem.Header>
-                        <StackPanel Margin="16">
-                            <TextBlock
-                                Margin="0,0,0,8"
-                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                Text="Python" />
-                            <TextBlock>
-                                <Run Text="tab 3 content. Default look and behaviors." />
-                                <LineBreak />
-                                <LineBreak />
-                                <Run FontStyle="Italic">
-                                    Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-                                </Run>
-                            </TextBlock>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <StackPanel
+                                Grid.Row="0"
+                                Margin="16"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    x:Name="condaV"
+                                    VerticalAlignment="Center"
+                                    FontSize="70"
+                                    Foreground="#9ea">
+                                    Conda
+                                </TextBlock>
+                                <Border
+                                    Name="waitingA"
+                                    Width="80"
+                                    Height="80"
+                                    Margin="10"
+                                    BorderBrush="#1EEE"
+                                    BorderThickness="2"
+                                    CornerRadius="30">
+                                    <Border.Background>
+                                        <ImageBrush x:Name="waitingAImage" ImageSource="/images/conda.png" />
+                                    </Border.Background>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel
+                                x:Name="itemlist02"
+                                Grid.Row="1"
+                                Margin="16"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                                <ScrollViewer
+                                    MaxHeight="700"
+                                    Margin="16,16,-3,16"
+                                    VerticalAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch">
+                                    <ItemsControl x:Name="itemsControl2" />
+
+                                </ScrollViewer>
+
+                            </StackPanel>
+                        </Grid>
                     </TabItem>
                     <TabItem>
                         <TabItem.Header>

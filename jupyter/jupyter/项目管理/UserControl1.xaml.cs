@@ -19,6 +19,7 @@ namespace jupyter
 {
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
+    /// 项目卡片
     /// </summary>
     public partial class UserControl1 : UserControl
     {

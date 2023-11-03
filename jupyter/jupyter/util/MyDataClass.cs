@@ -115,5 +115,24 @@ namespace jupyter.util
             }
             return Regex.Replace(input, @"[^\x00-\xff]", "aa").Length;//计算得到该字符串对应单字节字符串的长度
         }
+
+        #region python相关
+
+
+        public static Dictionary<string, string> ExtractPackageVersions(IEnumerable<string> lines)
+        {
+            Dictionary<string, string> packages = new Dictionary<string, string>();
+            foreach (var line in lines)
+            {
+                var match = Regex.Match(line, @"^(?<PackageName>[a-zA-Z0-9_.-]+)\s+(?<Version>[0-9._]+)$");
+                if (match.Success)
+                {
+                    packages[match.Groups["PackageName"].Value] = match.Groups["Version"].Value;
+                }
+            }
+            return packages;
+        }
+
+        #endregion python 相关结束
     }
 }

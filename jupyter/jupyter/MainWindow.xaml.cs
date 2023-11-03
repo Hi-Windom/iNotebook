@@ -194,7 +194,7 @@ namespace jupyter
 
             // 获取cmd窗口的输出信息
             string multiLineString = p.StandardOutput.ReadToEnd();
-            string pattern = @"^(?:Windows PowerShell|版权所有（C） Microsoft|安装最新的 PowerShell|加载个人及系统配置文件).*|.*>exit$";
+            string pattern = @"^(?:Windows PowerShell|版权所有（C） Microsoft|安装最新的 PowerShell|加载个人及系统配置文件).*";
             string result = Regex.Replace(multiLineString, pattern, string.Empty, RegexOptions.Multiline).Trim();
             App.DCbox.Name = result;
             WindowsManager2<右下角累加通知>.Show(App.DCbox);
@@ -225,12 +225,19 @@ namespace jupyter
             TextBox? shellTextBox = _shell.FindName("shellTextBox") as TextBox;
             if (shellTextBox == null) { return; }
             string multiLineString = p.StandardOutput.ReadToEnd();
-            string pattern1 = @"^(?:Windows PowerShell|版权所有（C） Microsoft|安装最新的 PowerShell|加载个人及系统配置文件).*|^.*exit$";
+            string pattern1 = @"^(?:Windows PowerShell|版权所有（C） Microsoft|安装最新的 PowerShell|加载个人及系统配置文件).*";
             string result = Regex.Replace(multiLineString, pattern1, string.Empty, RegexOptions.Multiline).Trim();
             pattern1 = @"^.*exit$";
             result = Regex.Replace(result, pattern1, string.Empty, RegexOptions.Multiline).Trim();
 
             string[] lines = result.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            var dictionary = MyDataClass.ExtractPackageVersions(lines);
+
+            foreach (var item in dictionary)
+            {
+                App.DCbox.Name = $"{item.Key} : {item.Value}";
+                WindowsManager2<右下角累加通知>.Show(App.DCbox);
+            }
 
             foreach (string line in lines)
             {

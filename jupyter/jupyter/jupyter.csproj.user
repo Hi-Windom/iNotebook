@@ -24,6 +24,9 @@
     <Compile Update="项目管理\UserControl1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="项目管理\UserControl2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="项目管理\项目管理.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -51,6 +54,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="项目管理\UserControl1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="项目管理\UserControl2.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="项目管理\项目管理.xaml">

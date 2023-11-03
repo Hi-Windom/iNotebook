@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="jupyter.UserControl1"
+    x:Class="jupyter.UserControl2"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -52,19 +52,25 @@
                         <Button
                             Width="Auto"
                             Click="Button_Click_1"
-                            Content="通过 VSCode 打开"
+                            Content="环境包管理"
                             Style="{StaticResource MaterialDesignFlatButton}"
                             ToolTip="MaterialDesignFlatButton" />
                         <Button
                             Width="Auto"
                             Click="Button_Click_2"
-                            Content="通过 Jupyter Lab 打开"
+                            Content="环境克隆"
                             Style="{StaticResource MaterialDesignFlatButton}"
                             ToolTip="MaterialDesignFlatButton" />
                         <Button
                             Width="Auto"
                             Click="Button_Click_3"
-                            Content="通过 Jupyter Notebook 打开"
+                            Content="环境销毁"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="MaterialDesignFlatButton" />
+                        <Button
+                            Width="Auto"
+                            Click="Button_Click_4"
+                            Content="环境可移植管理"
                             Style="{StaticResource MaterialDesignFlatButton}"
                             ToolTip="MaterialDesignFlatButton" />
                     </StackPanel>
@@ -72,5 +78,4 @@
             </StackPanel>
         </Grid>
     </materialDesign:Card>
-
 </UserControl>
