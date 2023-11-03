@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Shell.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="关于软件\关于软件.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +30,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Shell.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="关于软件\关于软件.xaml">

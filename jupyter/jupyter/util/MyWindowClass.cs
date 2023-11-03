@@ -41,7 +41,7 @@ namespace jupyter.util
     {
         static TWindow window;
 
-        public static void Show(object vm)
+        public static TWindow Show(object vm)
         {
             if (window == null)
             {
@@ -53,6 +53,7 @@ namespace jupyter.util
             WindowsManager<TWindow>.window.Show();
             // 再次打开窗口时需要激活
             WindowsManager<TWindow>.window.Activate();
+            return window;
         }
 
         static void onClosing(object sender, CancelEventArgs e)

@@ -86,17 +86,18 @@ namespace jupyter
             try
             {
                 // 启动命令行进程
-                Process process = new Process();
-                process.StartInfo.FileName = "powershell.exe"; // 命令行解释器
-                process.StartInfo.UseShellExecute = false; // 是否使用操作系统外壳程序
-                process.StartInfo.RedirectStandardInput = true; // 是否重定向标准输入
-                process.StartInfo.RedirectStandardOutput = true; // 是否重定向标准输出
-                process.StartInfo.CreateNoWindow = false; // 是否创建窗口
-                process.Start();
+                Process p = new Process();
+                p.StartInfo.FileName = "powershell.exe"; // 命令行解释器
+                p.StartInfo.UseShellExecute = false; // 是否使用操作系统外壳程序
+                p.StartInfo.RedirectStandardInput = true; // 是否重定向标准输入
+                p.StartInfo.RedirectStandardOutput = true; // 是否重定向标准输出
+                p.StartInfo.CreateNoWindow = false; // 是否创建窗口
+                p.Start();
 
                 // 模拟用户输入
-                process.StandardInput.WriteLine(cmd2);
-                process.StandardInput.WriteLine(cmd);
+                p.StandardInput.WriteLine(cmd2);
+                p.StandardInput.WriteLine(cmd);
+                p.StandardInput.AutoFlush = true;
 
             }
             catch (Exception ex)

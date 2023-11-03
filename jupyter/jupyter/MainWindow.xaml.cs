@@ -4,6 +4,7 @@ using Masuit.Tools.Logging;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
+using Application = System.Windows.Application;
 
 namespace jupyter
 {
@@ -25,6 +28,7 @@ namespace jupyter
         bool _ShowingDialog = false;
         bool _reLogin = false;
         WindowsManager2_SingleStringArgsDC dc = new();
+
         public MainWindow(bool newin = true)
         {
             InitializeComponent();
@@ -174,12 +178,67 @@ namespace jupyter
 
         private void dev2_Click(object sender, RoutedEventArgs e)
         {
+            // 启动命令行进程
+            Process p = new Process();
+            p.StartInfo.FileName = "powershell.exe"; // 命令行解释器
+            p.StartInfo.UseShellExecute = false; // 是否使用操作系统外壳程序
+            p.StartInfo.RedirectStandardInput = true; // 是否重定向标准输入
+            p.StartInfo.RedirectStandardOutput = true; // 是否重定向标准输出
+            p.StartInfo.CreateNoWindow = true; // 是否创建窗口
+            p.Start();
 
+            // 模拟用户输入
+            p.StandardInput.WriteLine("pip list");
+            p.StandardInput.WriteLine("exit");
+            p.StandardInput.AutoFlush = true;
+
+            // 获取cmd窗口的输出信息
+            string multiLineString = p.StandardOutput.ReadToEnd();
+            string pattern = @"^(?:Windows PowerShell|版权所有（C） Microsoft|安装最新的 PowerShell|加载个人及系统配置文件).*|.*>exit$";
+            string result = Regex.Replace(multiLineString, pattern, string.Empty, RegexOptions.Multiline).Trim();
+            App.DCbox.Name = result;
+            WindowsManager2<右下角累加通知>.Show(App.DCbox);
+            // 等待程序执行完退出进程
+            p.WaitForExit();
+            p.Close();
         }
 
         private void dev3_Click(object sender, RoutedEventArgs e)
         {
+            // 启动命令行进程
+            Process p = new Process();
+            p.StartInfo.FileName = "powershell.exe"; // 命令行解释器
+            p.StartInfo.UseShellExecute = false; // 是否使用操作系统外壳程序
+            p.StartInfo.RedirectStandardInput = true; // 是否重定向标准输入
+            p.StartInfo.RedirectStandardOutput = true; // 是否重定向标准输出
+            p.StartInfo.CreateNoWindow = true; // 是否创建窗口
+            p.Start();
 
+            // 模拟用户输入
+            p.StandardInput.WriteLine("pip list");
+            p.StandardInput.WriteLine("exit");
+            p.StandardInput.AutoFlush = true;
+
+            // 获取cmd窗口的输出信息
+            var _shell = WindowsManager<Shell>.Show(new object()); // 单实例
+            // 获取shellTextBox文本框的引用
+            TextBox? shellTextBox = _shell.FindName("shellTextBox") as TextBox;
+            if (shellTextBox == null) { return; }
+            string multiLineString = p.StandardOutput.ReadToEnd();
+            string pattern1 = @"^(?:Windows PowerShell|版权所有（C） Microsoft|安装最新的 PowerShell|加载个人及系统配置文件).*|^.*exit$";
+            string result = Regex.Replace(multiLineString, pattern1, string.Empty, RegexOptions.Multiline).Trim();
+            pattern1 = @"^.*exit$";
+            result = Regex.Replace(result, pattern1, string.Empty, RegexOptions.Multiline).Trim();
+
+            string[] lines = result.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            foreach (string line in lines)
+            {
+                shellTextBox.Text += line + "\n";
+            }
+            // 等待程序执行完退出进程
+            p.WaitForExit();
+            p.Close();
         }
 
         private void logEntrance_Click(object sender, RoutedEventArgs e)
